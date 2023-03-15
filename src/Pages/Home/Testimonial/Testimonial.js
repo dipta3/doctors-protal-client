@@ -1,8 +1,37 @@
 import React from 'react';
 import quote from '../../../assets/icons/quote.svg'
+import people1 from '../../../assets/images/people1.png'
+import people2 from '../../../assets/images/people2.png'
+import people3 from '../../../assets/images/people3.png'
+import Review from './Review';
 const Testimonial = () => {
+
+    const reviews = [
+        {
+            _id: 1,
+            name: 'Abdullah Nasir',
+            msg: 'It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content',
+            location: 'Mirpur-1',
+            img: people1
+        },
+        {
+            _id: 2,
+            name: 'Rokeya Begum',
+            msg: 'It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content',
+            location: 'Dhanmondi',
+            img: people2
+        },
+        {
+            _id: 3,
+            name: 'Fatema Binte',
+            msg: 'It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content',
+            location: 'Gulshan',
+            img: people3
+        },
+
+    ]
     return (
-        <section className='my-16'>
+        <section className='my-16 px-10'>
             <div className='flex justify-between'>
                 <div>
                     <h4 className="text-xl text-secondary font-bold">Testimonial</h4>
@@ -12,8 +41,13 @@ const Testimonial = () => {
                     <img className='w-24 lg:w-48' src={quote} alt="" />
                 </figure>
             </div>
-            <div>
-
+            <div className='grid my-10 gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+                {
+                    reviews.map(review => <Review
+                        key={review._id}
+                        review={review}
+                    ></Review>)
+                }
             </div>
         </section>
     );
