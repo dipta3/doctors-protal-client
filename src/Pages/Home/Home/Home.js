@@ -1,9 +1,10 @@
 import React from 'react';
-import ServiceCards from '../../ServiceCards/ServiceCards';
+
 
 import Banner from '../Banner/Banner';
 import InfoCards from '../InfoCards/InfoCards';
 import MakeAppoinment from '../MakeAppoinment/MakeAppoinment';
+import ServiceCards from '../ServiceCards/ServiceCards';
 
 const Home = () => {
     return (
