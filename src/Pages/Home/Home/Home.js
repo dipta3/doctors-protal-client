@@ -2,6 +2,7 @@ import React from 'react';
 
 
 import Banner from '../Banner/Banner';
+import ContractUs from '../ContractUs/ContractUs';
 import InfoCards from '../InfoCards/InfoCards';
 import MakeAppoinment from '../MakeAppoinment/MakeAppoinment';
 import ServiceCards from '../ServiceCards/ServiceCards';
@@ -15,6 +16,7 @@ const Home = () => {
             <ServiceCards></ServiceCards>
             <MakeAppoinment></MakeAppoinment>
             <Testimonial></Testimonial>
+            <ContractUs></ContractUs>
         </div>
     );
 };
