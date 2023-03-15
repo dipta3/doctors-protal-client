@@ -9,7 +9,7 @@ const Banner = () => {
                 <div>
                     <h1 className="text-5xl font-bold">Your New Smile Starts Here</h1>
                     <p className="py-6">We have modern well equipped Operation unit. We use modern technology including  Autoclave Machine, UV Cabinet,  Endodontic Electric Motor, Apex Locator, Intraoral camera  to offer best oral treatment. </p>
-                    <PrimayButton></PrimayButton>
+                    <PrimayButton>GET STARTED</PrimayButton>
                 </div>
             </div>
         </div>
