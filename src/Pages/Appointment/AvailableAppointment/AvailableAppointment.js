@@ -1,7 +1,7 @@
 import React from 'react';
-import PrimayButton from '../../../components/PrimaryButton/PrimayButton';
 
-const AvailableAppointment = ({ appointmentOption }) => {
+
+const AvailableAppointment = ({ appointmentOption, setTreatment }) => {
     const { name, slots } = appointmentOption;
     return (
         <div className="card shadow-xl">
@@ -12,7 +12,11 @@ const AvailableAppointment = ({ appointmentOption }) => {
                 }</p>
                 <p>{slots.length} {slots.length > 1 ? 'spaces' : 'space'} available</p>
                 <div className="card-actions justify-end">
-                    <PrimayButton>Book Appointment</PrimayButton>
+                    <label
+                        htmlFor="booking-modal"
+                        className="btn text-white btn-primary bg-gradient-to-r from-primary to-secondary"
+                        onClick={() => setTreatment(appointmentOption)}
+                    >Book Appointment</label>
                 </div>
             </div>
         </div>
