@@ -1,13 +1,18 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const SignUp = () => {
-    const { createUser, updateUser } = useContext(AuthContext)
+    const { createUser, updateUser, providerLogin } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [signUpError, setSignUpError] = useState('')
+    const googleProvider = new GoogleAuthProvider()
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
     const handleSignUp = (data) => {
         setSignUpError('')
@@ -24,6 +29,19 @@ const SignUp = () => {
                     .catch(error => console.log(error))
             })
             .catch(error => { setSignUpError(error.message) })
+    }
+    const handleGoogleSignIn = () => {
+        providerLogin(googleProvider)
+            .then(result => {
+                const user = result.user;
+
+                navigate(from, { replace: true });
+                setSignUpError(' ')
+            })
+            .catch(error => {
+
+                setSignUpError(error.message)
+            })
     }
     return (
         <div className='h-[800px] flex justify-center items-center'>
@@ -66,7 +84,7 @@ const SignUp = () => {
                 </form>
                 <p className='text-center text-xs mt-2'>Already have an account <Link className='text-secondary' to='/login'>Please login</Link> </p>
                 <div className="divider">OR</div>
-                <button className='btn btn-outline w-full'>Continue with google</button>
+                <button onClick={handleGoogleSignIn} className='btn btn-outline w-full'>Continue with google</button>
             </div>
         </div>
     );
