@@ -40,6 +40,9 @@ const BookingModal = ({ treatment, selectedDate, setTreatment, refetch }) => {
                     toast.success('Booking Confirmed');
                     refetch();
                 }
+                else {
+                    toast.error(data.message)
+                }
             })
 
 
@@ -54,7 +57,6 @@ const BookingModal = ({ treatment, selectedDate, setTreatment, refetch }) => {
                     <form className='grid grid-cols-1 gap-3 mt-10' onSubmit={handleBooking}>
                         <input type="text" value={date} className="input input-bordered w-full" disabled />
                         <select name='slot' className="select select-bordered w-full">
-                            <option>Pick Your Slot</option>
                             {
                                 slots.map((slot, i) => <option
                                     value={slot}
