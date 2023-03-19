@@ -1,14 +1,19 @@
 import { format } from 'date-fns';
-import React from 'react';
+import React, { useContext } from 'react';
+import { toast } from 'react-hot-toast';
+import { json } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider';
 
 const BookingModal = ({ treatment, selectedDate, setTreatment }) => {
     const { name, slots } = treatment;
     const date = format(selectedDate, 'PP')
+
+    const { user } = useContext(AuthContext)
     const handleBooking = event => {
         event.preventDefault()
         const form = event.target;
         const slot = form.slot.value;
-        const fullName = form.name.value;
+        const fullName = form.fullName.value;
         const phone = form.phone.value;
         const email = form.email.value;
 
@@ -20,11 +25,23 @@ const BookingModal = ({ treatment, selectedDate, setTreatment }) => {
             phone,
             email,
         }
+        fetch('http://localhost:5000/bookings', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(booking)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.acknowledged) {
+                    setTreatment(null);
+                    toast.success('Booking Confirmed')
+                }
+            })
 
 
-
-        console.log(booking)
-        setTreatment(null)
     }
     return (
         <>
@@ -44,9 +61,11 @@ const BookingModal = ({ treatment, selectedDate, setTreatment }) => {
                                 >{slot}</option>)
                             }
                         </select>
-                        <input type="text" name='fullName' placeholder="Full Name" className="input input-bordered w-full" required />
+                        <input type="text" defaultValue={user?.displayName} disabled name='fullName' placeholder="Full Name" className="input input-bordered w-full" required />
+                        <input name='email' defaultValue={user?.email} disabled type="email" placeholder="Email" className="input input-bordered w-full" required />
+
                         <input type="text" name='phone' placeholder="Phone Number" className="input input-bordered w-full" required />
-                        <input name='email' type="email" placeholder="Email" className="input input-bordered w-full" required />
+
                         <input className='btn btn-accent w-full' type="submit" value="Submit" />
                     </form>
                 </div>
