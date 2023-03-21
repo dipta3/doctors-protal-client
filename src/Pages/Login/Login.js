@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
+import useToken from '../../hooks/useToken';
 
 const Login = () => {
     const { signIn, providerLogin } = useContext(AuthContext)
@@ -13,14 +14,19 @@ const Login = () => {
     const location = useLocation();
     const googleProvider = new GoogleAuthProvider()
     const from = location.state?.from?.pathname || "/";
-
+    const [loginUserEmail, setLoginUserEmail] = useState('')
+    const [token] = useToken(loginUserEmail)
+    if (token) {
+        navigate(from, { replace: true });
+    }
     const handleLogin = data => {
         setLoginError('');
         signIn(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                navigate(from, { replace: true });
+                setLoginUserEmail(data.email)
+
             })
             .catch(error => {
                 setLoginError(error.message)
