@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 import React, { useContext } from 'react';
 import { toast } from 'react-hot-toast';
-import { json } from 'react-router-dom';
+
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const BookingModal = ({ treatment, selectedDate, setTreatment, refetch }) => {
