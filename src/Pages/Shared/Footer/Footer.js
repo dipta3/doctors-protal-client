@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import footer from '../../../assets/images/footer.png'
 const Footer = () => {
     return (
-        <footer className=" mt-10 p-10 " style={{
+        <footer className=" mt-10 p-10 shadow-xl" style={{
             background: `url(${footer})`,
             backgroundSize: 'cover'
         }}>
