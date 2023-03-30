@@ -59,11 +59,11 @@ const AddDoctor = () => {
             })
     }
     return (
-        <div className='w-96 p-7'>
-            <h2 className='text-2xl font-bold my-5'>Add A New Doctor</h2>
+        <div className='w-96 p-7 '>
+            <h2 className='text-2xl font-bold my-5 text-center'>Add A New Doctor</h2>
 
             <form onSubmit={handleSubmit(handleAddDoctor)}>
-                <div className="form-control w-full max-w-xs">
+                <div className="form-control  w-full max-w-xs">
                     <label className="label"><span className="label-text">Name</span></label>
                     <input type="text"
                         className="input input-bordered w-full max-w-xs"
