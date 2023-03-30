@@ -63,7 +63,7 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/payment/:id',
                 loader: ({ params }) => fetch(`https://doctors-protal-server-brown.vercel.app/bookings/${params.id}`),
-                element: <AdminRoute><Payment></Payment></AdminRoute>
+                element: <Payment></Payment>
             },
 
         ]
