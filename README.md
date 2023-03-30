@@ -17,6 +17,6 @@ This project developed with ReactJS, TailwindCSS, DaisyUI, NodeJS, Firebase.
 8. Admin can Add Doctor and manage doctor.
 
 
-Live Preview Link: [Doctors Portal](https://food-gasm-2c800.web.app/)
+Live Preview Link: [Doctors Portal](https://doctors-portal-1662e.web.app/)
 
 Doctors Portal GitHub Server Link: [Doctors_Portal_Server_GitHub](https://github.com/dipta3/doctors-portal-server)
